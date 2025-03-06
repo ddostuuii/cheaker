@@ -24,6 +24,7 @@ def is_user_member(user_id):
         return False  # अगर कोई error आए तो assume करेंगे कि यूज़र मेंबर नहीं है
 
 # Handle /start command
+
 @bot.message_handler(commands=["start"])
 def start(message):
     user_id = message.from_user.id
@@ -36,23 +37,27 @@ def start(message):
         keyboard.add(join_button)
         keyboard.add(check_button)
 
-        bot.send_message(
+        # Force join का मैसेज + पिक्चर
+        bot.send_photo(
             message.chat.id,
-            f"🔒 **Access Denied!**\n\n"
-            f"आपको पहले हमारे चैनल को जॉइन करना होगा:\n"
-            f"👉 [Join Now](https://t.me/{CHANNEL_USERNAME})\n\n"
-            f"⚡ फिर से `/start` कमांड यूज़ करें!",
-            reply_markup=keyboard,
-            disable_web_page_preview=True,
+            photo="https://t.me/seedhe_maut_owner9/34",
+            caption=(
+                "🔒 **Access Denied!**\n\n"
+                "आपको पहले हमारे चैनल को जॉइन करना होगा:\n"
+                "👉 [Join Now](https://t.me/seedhe_maut)\n\n"
+                "⚡ फिर से `/start` कमांड यूज़ करें!"
+            ),
+            reply_markup=keyboard
         )
         return
 
-    # बॉट का वेलकम मैसेज + पिक्चर
+    # अगर यूज़र मेंबर है तो नॉर्मल `/start` मैसेज भेजें
     bot.send_photo(
         message.chat.id,
         photo="https://t.me/seedhe_maut_owner9/34",
         caption="𝗖𝗰 𝗰𝗵𝗲𝗮𝗸𝗲𝗿 𝗯𝗼𝘁 𝗯𝘆 𝗠𝗮𝘂𝘁. 𝗨𝘀𝗲 𝗮𝗻𝗱 𝘀𝗲𝗻𝗱 𝗳𝗲𝗲𝗱𝗯𝗮𝗰𝗸!\n\n𝗦𝗲𝗻𝗱 𝗧𝗵𝗲 𝗙𝗶𝗹𝗲 𝗧𝗼 𝗖𝗵𝗲𝗰𝗸 ✔️"
     )
+
 
 
 # Callback handler for "Check Again" button
