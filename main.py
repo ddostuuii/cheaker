@@ -47,7 +47,13 @@ def start(message):
         )
         return
 
-    bot.reply_to(message, "𝗦𝗲𝗻𝗱 𝗧𝗵𝗲 𝗙𝗶𝗹𝗲 𝗧𝗼 𝗖𝗵𝗲𝗰𝗸 ✔️")
+    # बॉट का वेलकम मैसेज + पिक्चर
+    bot.send_photo(
+        message.chat.id,
+        photo="https://t.me/seedhe_maut_owner9/34",
+        caption="𝗖𝗰 𝗰𝗵𝗲𝗮𝗸𝗲𝗿 𝗯𝗼𝘁 𝗯𝘆 𝗠𝗮𝘂𝘁. 𝗨𝘀𝗲 𝗮𝗻𝗱 𝘀𝗲𝗻𝗱 𝗳𝗲𝗲𝗱𝗯𝗮𝗰𝗸!\n\n𝗦𝗲𝗻𝗱 𝗧𝗵𝗲 𝗙𝗶𝗹𝗲 𝗧𝗼 𝗖𝗵𝗲𝗰𝗸 ✔️"
+    )
+
 
 # Callback handler for "Check Again" button
 @bot.callback_query_handler(func=lambda call: call.data == "check_join")
